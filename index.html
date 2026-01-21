@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Het Pollinatorpad - Een thuis voor bestuivers, een belevenis voor jou</title>
+    <meta name="description" content="Een 30 kilometer lang natuurpad door de Betuwe. Samen creëren we een bloeiend lint van wilde bloemen en biodiversiteit.">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #4A7C59;
+            --bright-green: #7CB342;
+            --soft-yellow: #FFD54F;
+            --warm-orange: #FF7043;
+            --river-blue: #42A5F5;
+            --sky-blue: #90CAF9;
+            --meadow-green: #AED581;
+            --earth-brown: #8D6E63;
+            --cream: #FFFEF7;
+            --white: #FFFFFF;
+            --dark-text: #2E3B2E;
+            --light-text: #5F6F65;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark-text);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Decorative background elements */
+        .bg-decoration {
+            position: fixed;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bright-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--bright-green);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - With video background */
+        .hero {
+            min-height: 90vh;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg, 
+                rgba(227, 242, 253, 0.75) 0%, 
+                rgba(241, 248, 233, 0.65) 50%, 
+                rgba(255, 249, 196, 0.75) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Subtle animated overlay pattern */
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: pattern-move 40s linear infinite;
+        }
+
+        @keyframes pattern-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .hero-underline {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: var(--soft-yellow);
+            opacity: 0.6;
+            transform: skewY(-1deg);
+            z-index: -1;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .description {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--warm-orange);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 112, 67, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 112, 67, 0.4);
+        }
+
+        /* Floating illustrated elements */
+        .floating-bee, .floating-flower, .floating-butterfly {
+            position: absolute;
+            animation: float-drift 8s ease-in-out infinite;
+        }
+
+        .floating-bee {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-flower {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-butterfly {
+            top: 35%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float-drift {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, -20px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-15px, -30px) rotate(-3deg);
+            }
+            75% {
+                transform: translate(10px, -15px) rotate(3deg);
+            }
+        }
+
+        /* Section styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20%;
+            right: 20%;
+            height: 8px;
+            background: var(--soft-yellow);
+            opacity: 0.5;
+            transform: skewY(-1deg);
+        }
+
+        .section-intro {
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--light-text);
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+        }
+
+        /* About Section - More visual */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--meadow-green) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-illustration {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+
+        /* Progress Section - More playful */
+        .progress-section {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            border-radius: 40px;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L60 40 L90 40 L65 60 L75 90 L50 70 L25 90 L35 60 L10 40 L40 40 Z' fill='%23FFD54F' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: contain;
+            animation: spin-slow 30s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .progress-bar-container {
+            background: var(--white);
+            height: 70px;
+            border-radius: 35px;
+            overflow: visible;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--bright-green), var(--meadow-green));
+            height: 100%;
+            width: 0%;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 2rem;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.4rem;
+            border-radius: 35px;
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.4);
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '🐝';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: bee-fly 2s ease-in-out infinite;
+        }
+
+        @keyframes bee-fly {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-60%) translateX(5px); }
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--bright-green);
+            display: block;
+            font-family: 'Caveat', cursive;
+        }
+
+        .stat-label {
+            color: var(--light-text);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Community Section - More engaging */
+        .community-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--bright-green) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20 Q30 30 30 50 T50 80 T70 50 T50 20' fill='none' stroke='white' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .community-section h2 {
+            color: var(--white);
+        }
+
+        .community-section h2::after {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .community-card {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .community-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .community-card:hover::before {
+            opacity: 1;
+        }
+
+        .community-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .community-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .community-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Event Section - Festive */
+        .event-section {
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, #FFE082 100%);
+            padding: 5rem 3rem;
+            text-align: center;
+            border-radius: 40px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(255, 213, 79, 0.3);
+        }
+
+        .event-section::before,
+        .event-section::after {
+            content: '🎉';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.15;
+            animation: party 5s ease-in-out infinite;
+        }
+
+        .event-section::before {
+            top: 20px;
+            left: 50px;
+        }
+
+        .event-section::after {
+            bottom: 20px;
+            right: 50px;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes party {
+            0%, 100% { transform: rotate(-10deg) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .event-date {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--warm-orange);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+        }
+
+        .event-section h2 {
+            color: var(--dark-text);
+        }
+
+        /* Partners Section */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .partner-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--meadow-green);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .partner-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        /* Photo hover effects */
+        .photo-card img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-text) 0%, #1a2a1a 100%);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        footer h4 {
+            margin-bottom: 1.5rem;
+            color: var(--soft-yellow);
+            font-size: 1.3rem;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--meadow-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.4rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .community-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Definitions for custom illustrations -->
+    <svg style="display: none;">
+        <defs>
+            <!-- Custom Logo -->
+            <symbol id="logo-symbol" viewBox="0 0 120 120">
+                <!-- Flowing river path -->
+                <path d="M20 60 Q35 45, 50 60 T80 60 Q95 75, 100 60" 
+                      stroke="#42A5F5" stroke-width="6" fill="none" 
+                      stroke-linecap="round" opacity="0.7"/>
+                
+                <!-- Wildflower 1 -->
+                <g transform="translate(30, 35)">
+                    <line x1="0" y1="20" x2="0" y2="0" stroke="#7CB342" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="5" fill="#FFD54F"/>
+                    <circle cx="-4" cy="-2" r="3" fill="#FF7043" opacity="0.8"/>
+                    <circle cx="4" cy="-2" r="3" fill="#FF7043" opacity="0.8"/>
+                    <circle cx="-2" cy="3" r="3" fill="#FF7043" opacity="0.8"/>
+                    <circle cx="2" cy="3" r="3" fill="#FF7043" opacity="0.8"/>
+                </g>
+                
+                <!-- Wildflower 2 -->
+                <g transform="translate(60, 30)">
+                    <line x1="0" y1="25" x2="0" y2="0" stroke="#7CB342" stroke-width="2"/>
+                    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#AED581" transform="rotate(30)"/>
+                    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#AED581" transform="rotate(90)"/>
+                    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#AED581" transform="rotate(150)"/>
+                    <circle cx="0" cy="0" r="3" fill="#FFD54F"/>
+                </g>
+                
+                <!-- Bee -->
+                <g transform="translate(75, 50)">
+                    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#FFD54F"/>
+                    <rect x="-2" y="-2" width="1" height="4" fill="#2E3B2E"/>
+                    <rect x="1" y="-2" width="1" height="4" fill="#2E3B2E"/>
+                    <path d="M-6 -2 Q-8 -3, -6 -4" stroke="#E3F2FD" stroke-width="1.5" fill="none"/>
+                    <path d="M6 -2 Q8 -3, 6 -4" stroke="#E3F2FD" stroke-width="1.5" fill="none"/>
+                </g>
+                
+                <!-- Path/footsteps suggestion -->
+                <ellipse cx="45" cy="75" rx="4" ry="6" fill="#8D6E63" opacity="0.3" transform="rotate(-20 45 75)"/>
+                <ellipse cx="55" cy="80" rx="4" ry="6" fill="#8D6E63" opacity="0.3" transform="rotate(15 55 80)"/>
+            </symbol>
+
+            <!-- Bee illustration -->
+            <symbol id="bee-illustration" viewBox="0 0 100 100">
+                <ellipse cx="50" cy="50" rx="20" ry="15" fill="#FFD54F"/>
+                <rect x="43" y="40" width="3" height="20" fill="#2E3B2E" rx="1"/>
+                <rect x="54" y="40" width="3" height="20" fill="#2E3B2E" rx="1"/>
+                <path d="M25 40 Q15 35, 25 30" stroke="#E3F2FD" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M75 40 Q85 35, 75 30" stroke="#E3F2FD" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <circle cx="43" cy="45" r="3" fill="#2E3B2E"/>
+                <circle cx="57" cy="45" r="3" fill="#2E3B2E"/>
+                <path d="M45 55 Q50 58, 55 55" stroke="#2E3B2E" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </symbol>
+
+            <!-- Flower illustration -->
+            <symbol id="flower-illustration" viewBox="0 0 100 100">
+                <line x1="50" y1="90" x2="50" y2="30" stroke="#7CB342" stroke-width="4" stroke-linecap="round"/>
+                <ellipse cx="35" cy="40" rx="12" ry="20" fill="#FF7043" opacity="0.9"/>
+                <ellipse cx="65" cy="40" rx="12" ry="20" fill="#FF7043" opacity="0.9"/>
+                <ellipse cx="50" cy="25" rx="20" ry="12" fill="#FF7043" opacity="0.9"/>
+                <ellipse cx="50" cy="55" rx="20" ry="12" fill="#FF7043" opacity="0.9"/>
+                <circle cx="50" cy="40" r="10" fill="#FFD54F"/>
+                <circle cx="50" cy="40" r="5" fill="#FF7043" opacity="0.6"/>
+            </symbol>
+
+            <!-- Butterfly illustration -->
+            <symbol id="butterfly-illustration" viewBox="0 0 100 100">
+                <ellipse cx="50" cy="50" rx="4" ry="12" fill="#2E3B2E"/>
+                <path d="M30 40 Q25 30, 35 25 Q40 20, 42 30 Q43 35, 38 40 Q32 45, 30 40" 
+                      fill="#FF7043" opacity="0.8"/>
+                <path d="M70 40 Q75 30, 65 25 Q60 20, 58 30 Q57 35, 62 40 Q68 45, 70 40" 
+                      fill="#FFD54F" opacity="0.8"/>
+                <path d="M28 65 Q22 70, 30 75 Q38 78, 40 70 Q42 62, 35 60 Q30 58, 28 65" 
+                      fill="#AED581" opacity="0.8"/>
+                <path d="M72 65 Q78 70, 70 75 Q62 78, 60 70 Q58 62, 65 60 Q70 58, 72 65" 
+                      fill="#90CAF9" opacity="0.8"/>
+                <line x1="48" y1="38" x2="42" y2="30" stroke="#2E3B2E" stroke-width="2"/>
+                <line x1="52" y1="38" x2="58" y2="30" stroke="#2E3B2E" stroke-width="2"/>
+            </symbol>
+
+            <!-- Walking person illustration -->
+            <symbol id="person-illustration" viewBox="0 0 100 100">
+                <circle cx="50" cy="25" r="10" fill="#7CB342"/>
+                <path d="M50 35 L50 60" stroke="#4A7C59" stroke-width="6" stroke-linecap="round"/>
+                <path d="M50 45 L35 55" stroke="#4A7C59" stroke-width="5" stroke-linecap="round"/>
+                <path d="M50 45 L65 38" stroke="#4A7C59" stroke-width="5" stroke-linecap="round"/>
+                <path d="M50 60 L40 85" stroke="#4A7C59" stroke-width="6" stroke-linecap="round"/>
+                <path d="M50 60 L60 90" stroke="#4A7C59" stroke-width="6" stroke-linecap="round"/>
+            </symbol>
+
+            <!-- Community/hands illustration -->
+            <symbol id="hands-illustration" viewBox="0 0 100 100">
+                <path d="M20 50 Q25 40, 30 45 L35 55 Q40 60, 35 65 Q30 70, 25 65 L20 50" 
+                      fill="#7CB342" opacity="0.8"/>
+                <path d="M80 50 Q75 40, 70 45 L65 55 Q60 60, 65 65 Q70 70, 75 65 L80 50" 
+                      fill="#AED581" opacity="0.8"/>
+                <circle cx="50" cy="50" r="15" fill="#FFD54F" opacity="0.9"/>
+                <path d="M45 48 Q50 45, 55 48" stroke="#4A7C59" stroke-width="2" fill="none"/>
+                <circle cx="45" cy="50" r="2" fill="#4A7C59"/>
+                <circle cx="55" cy="50" r="2" fill="#4A7C59"/>
+            </symbol>
+
+            <!-- Seedling/plant illustration -->
+            <symbol id="plant-illustration" viewBox="0 0 100 100">
+                <path d="M50 80 L50 40" stroke="#7CB342" stroke-width="5" stroke-linecap="round"/>
+                <path d="M50 50 Q35 40, 30 35 Q25 32, 28 28" 
+                      stroke="#AED581" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M50 60 Q65 50, 70 45 Q75 42, 72 38" 
+                      stroke="#AED581" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <ellipse cx="28" cy="28" rx="8" ry="12" fill="#7CB342" opacity="0.7"/>
+                <ellipse cx="72" cy="38" rx="8" ry="12" fill="#7CB342" opacity="0.7"/>
+            </symbol>
+        </defs>
+    </svg>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Het Pollinatorpad</a>
+            <nav>
+                <ul>
+                    <li><a href="#over">Over het pad</a></li>
+                    <li><a href="#route">De route</a></li>
+                    <li><a href="#meedoen">Doe mee</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Het Pollinatorpad</h1>
+                <p class="tagline">Een thuis voor bestuivers, een belevenis voor jou</p>
+                <p class="description">
+                    Samen creëren we een bloeiend lint van 30 kilometer door de Betuwe. 
+                    Een levend landschap vol wilde bloemen, vlinders, bijen en biodiversiteit.
+                </p>
+                <a href="#meedoen" class="cta-button">Doe mee!</a>
+            </div>
+        </section>
+
+        <section id="over">
+            <h2>Een pad vol leven</h2>
+            <p class="section-intro">
+                Het Pollinatorpad is meer dan een wandelroute. Het is een initiatief van en voor de gemeenschap. 
+                We verbinden mensen, natuur en landschap in de prachtige Betuwe.
+            </p>
+            
+            <div class="about-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🐝</div>
+                    <h3>Voor bestuivers</h3>
+                    <p>
+                        Wilde bloemen, kruidenrijke bermen en bloeiende hagen creëren een doorlopende corridor 
+                        waar bijen, vlinders en andere bestuivers het hele jaar door voedsel vinden.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚶</div>
+                    <h3>Voor jou</h3>
+                    <p>
+                        Een prachtige wandel- en fietsroute door het Betuwse landschap. Geniet van bloeiende 
+                        velden, ontdek de natuur en ervaar de seizoenen in al hun pracht.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Samen doen</h3>
+                    <p>
+                        Dit pad ontstaat door de inzet van bewoners, boeren, gemeenten en natuurliefhebbers. 
+                        Iedereen kan bijdragen aan een groenere, levendiger Betuwe.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section style="background: linear-gradient(135deg, #F1F8E9 0%, #E8F5E9 100%); padding: 6rem 2rem; margin: 0; position: relative;">
+            <h2 style="margin-bottom: 3rem;">Bloeiend leven</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto;">
+                <div class="photo-card">
+                    <img src="images/Simone_Entius-Oudt__simone_oudt_gmail_com___1_.jpg" 
+                         alt="Bij op bloem" 
+                         style="width: 100%; height: 450px; object-fit: cover; display: block; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.12); transition: transform 0.3s;">
+                </div>
+                
+                <div class="photo-card">
+                    <img src="images/nadievanwijk-3.jpg" 
+                         alt="Bijen op bloemen" 
+                         style="width: 100%; height: 450px; object-fit: cover; display: block; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.12); transition: transform 0.3s;">
+                </div>
+                
+                <div class="photo-card">
+                    <img src="images/nadievanwijk-5.jpg" 
+                         alt="Bij op witte bloem" 
+                         style="width: 100%; height: 450px; object-fit: cover; display: block; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.12); transition: transform 0.3s;">
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 1.3rem; color: var(--light-text); margin-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                Dit is waar we het voor doen: wilde bloemen die gonzen van het leven, 
+                bestuivers die hun werk doen, en een landschap dat tot bloei komt.
+            </p>
+        </section>
+
+        <section id="route">
+            <h2>De route</h2>
+            <p class="section-intro">
+                30 kilometer door het hart van de Betuwe, van dorp naar dorp, van bloem naar bloem.
+            </p>
+
+            <div class="progress-section">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-green);">
+                    De voortgang
+                </h3>
+                <p style="font-size: 1.1rem; color: var(--light-text); margin-bottom: 2rem;">
+                    Meter voor meter groeit het pad. Volg hier de ontwikkeling.
+                </p>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <span id="progressText">0%</span>
+                    </div>
+                </div>
+
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="metersRealized">0</span>
+                        <span class="stat-label">meter gerealiseerd</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">30.000</span>
+                        <span class="stat-label">meter totaal</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="participantsCount">0</span>
+                        <span class="stat-label">deelnemers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <p style="font-size: 1.1rem; color: var(--light-text);">
+                    De route verbindt verschillende dorpen en kernen in de Betuwe. 
+                    Onderweg ontmoet je diverse landschappen: van fruitboomgaarden tot rivieruiterwaarden, 
+                    van bloeiende akkerranden tot oude dijken.
+                </p>
+            </div>
+        </section>
+
+        <section class="community-section" id="meedoen">
+            <h2>We doen dit samen</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Het Pollinatorpad ontstaat door de inzet van lokale bewoners, ondernemers en natuurliefhebbers. 
+                Jouw betrokkenheid maakt het verschil.
+            </p>
+
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>🌱 Plant mee</h3>
+                    <p>
+                        Help bij zaaiactiviteiten en plantdagen. Samen maken we de Betuwe groener.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <h3>💚 Adopteer een stuk pad</h3>
+                    <p>
+                        Neem de zorg voor een deel van het pad op je. Van een paar meter tot een heel stuk.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <h3>📢 Verspreid het woord</h3>
+                    <p>
+                        Vertel vrienden, familie en buren over het Pollinatorpad. Samen bereiken we meer.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <h3>🎉 Kom naar de opening</h3>
+                    <p>
+                        Vier mee bij de feestelijke opening in juni 2026!
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Meld je aan</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="event-section">
+                <div class="event-date">Juni 2026</div>
+                <h2 style="color: var(--dark-text); margin-bottom: 1rem;">Feestelijke opening!</h2>
+                <p style="font-size: 1.25rem; color: var(--dark-text); max-width: 700px; margin: 0 auto;">
+                    In juni 2026 openen we Het Pollinatorpad officieel. Een dag vol wandelen, ontdekken en vieren. 
+                    Met muziek, natuur en natuurlijk heel veel bloemen. Save the date!
+                </p>
+            </div>
+        </section>
+
+        <section id="partners">
+            <h2>Samen sterk</h2>
+            <p class="section-intro">
+                Het Pollinatorpad is een samenwerking tussen verschillende organisaties die zich inzetten 
+                voor biodiversiteit en natuurherstel in de Betuwe.
+            </p>
+
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <h3>The Pollinators</h3>
+                    <p>Biodiversiteitsorganisatie met 6000+ distributiepunten</p>
+                </div>
+
+                <div class="partner-card">
+                    <h3>Gonzend Rivierenland</h3>
+                    <p>Natuurherstel in het rivierengebied</p>
+                </div>
+
+                <div class="partner-card">
+                    <h3>Lokale gemeenten</h3>
+                    <p>Partners in groen en biodiversiteit</p>
+                </div>
+
+                <div class="partner-card">
+                    <h3>Bewoners</h3>
+                    <p>Jullie maken het pad tot een succes</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h4>Het Pollinatorpad</h4>
+                <p>Een initiatief voor biodiversiteit in de Betuwe</p>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>
+                    Email: <a href="mailto:info@hetpollinatorpad.nl">info@hetpollinatorpad.nl</a><br>
+                </p>
+            </div>
+
+            <div>
+                <h4>Volg ons</h4>
+                <p>
+                    Blijf op de hoogte via onze partners:<br>
+                    <a href="https://thepollinators.nl" target="_blank">The Pollinators</a><br>
+                </p>
+            </div>
+
+            <div>
+                <h4>Meedoen?</h4>
+                <p>
+                    Iedereen is welkom om bij te dragen aan Het Pollinatorpad. 
+                    Neem contact met ons op!
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Het Pollinatorpad | Een samenwerking tussen The Pollinators en Gonzend Rivierenland</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate progress bar on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate progress bar (example: 15% progress)
+                    const progressBar = document.getElementById('progressBar');
+                    const progressText = document.getElementById('progressText');
+                    const metersRealized = document.getElementById('metersRealized');
+                    const participantsCount = document.getElementById('participantsCount');
+                    
+                    let progress = 0;
+                    const targetProgress = 15; // Adjust this based on actual progress
+                    const targetMeters = 4500; // 15% of 30000
+                    const targetParticipants = 127; // Example number
+                    
+                    const interval = setInterval(() => {
+                        if (progress < targetProgress) {
+                            progress++;
+                            progressBar.style.width = progress + '%';
+                            progressText.textContent = progress + '%';
+                            metersRealized.textContent = Math.round((progress / 100) * targetMeters);
+                            participantsCount.textContent = Math.round((progress / 100) * targetParticipants);
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 30);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(document.querySelector('.progress-section'));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo-container">
+                <svg width="50" height="50">
+                    <use href="#logo-symbol"></use>
+                </svg>
+                <span class="logo-text">Het Pollinatorpad</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#over">Over het pad</a></li>
+                    <li><a href="#route">De route</a></li>
+                    <li><a href="#meedoen">Doe mee</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Video Background -->
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/Hommel__7_.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Overlay for readability -->
+            <div class="hero-overlay"></div>
+
+            <!-- Floating illustrated elements -->
+            <div class="floating-bee" style="z-index: 2;">
+                <svg width="80" height="80">
+                    <use href="#bee-illustration"></use>
+                </svg>
+            </div>
+            <div class="floating-flower" style="z-index: 2;">
+                <svg width="100" height="100">
+                    <use href="#flower-illustration"></use>
+                </svg>
+            </div>
+            <div class="floating-butterfly" style="z-index: 2;">
+                <svg width="90" height="90">
+                    <use href="#butterfly-illustration"></use>
+                </svg>
+            </div>
+
+            <div class="hero-content" style="z-index: 2; position: relative;">
+                <h1><span class="hero-underline">Het Pollinatorpad</span></h1>
+                <p class="tagline">Een thuis voor bestuivers, een belevenis voor jou</p>
+                <p class="description">
+                    Samen creëren we een bloeiend lint van 30 kilometer door de Betuwe. 
+                    Een levend landschap vol wilde bloemen, vlinders, bijen en biodiversiteit.
+                </p>
+                <a href="#meedoen" class="cta-button">Doe mee!</a>
+            </div>
+        </section>
+
+        <section id="over">
+            <h2>Een pad vol leven</h2>
+            <p class="section-intro">
+                Het Pollinatorpad is meer dan een wandelroute. Het is een initiatief van en voor de gemeenschap. 
+                We verbinden mensen, natuur en landschap in de prachtige Betuwe.
+            </p>
+            
+            <div class="about-grid">
+                <div class="feature-card">
+                    <div class="feature-illustration">
+                        <svg width="120" height="120">
+                            <use href="#bee-illustration"></use>
+                        </svg>
+                    </div>
+                    <h3>Voor bestuivers</h3>
+                    <p>
+                        Wilde bloemen, kruidenrijke bermen en bloeiende hagen creëren een doorlopende corridor 
+                        waar bijen, vlinders en andere bestuivers het hele jaar door voedsel vinden.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-illustration">
+                        <svg width="120" height="120">
+                            <use href="#person-illustration"></use>
+                        </svg>
+                    </div>
+                    <h3>Voor jou</h3>
+                    <p>
+                        Een prachtige wandel- en fietsroute door het Betuwse landschap. Geniet van bloeiende 
+                        velden, ontdek de natuur en ervaar de seizoenen in al hun pracht.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-illustration">
+                        <svg width="120" height="120">
+                            <use href="#hands-illustration"></use>
+                        </svg>
+                    </div>
+                    <h3>Samen doen</h3>
+                    <p>
+                        Dit pad ontstaat door de inzet van bewoners, boeren, gemeenten en natuurliefhebbers. 
+                        Iedereen kan bijdragen aan een groenere, levendiger Betuwe.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="route">
+            <h2>De route</h2>
+            <p class="section-intro">
+                30 kilometer door het hart van de Betuwe, van dorp naar dorp, van bloem naar bloem.
+            </p>
+
+            <div class="progress-section">
+                <h3 style="font-family: 'Caveat', cursive; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-green);">
+                    De voortgang
+                </h3>
+                <p style="font-size: 1.2rem; color: var(--light-text); margin-bottom: 2rem;">
+                    Meter voor meter groeit het pad. Volg hier de ontwikkeling.
+                </p>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <span id="progressText">0%</span>
+                    </div>
+                </div>
+
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="metersRealized">0</span>
+                        <span class="stat-label">meter gerealiseerd</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">30.000</span>
+                        <span class="stat-label">meter totaal</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="participantsCount">0</span>
+                        <span class="stat-label">deelnemers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <div style="background: white; padding: 3rem; border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 3rem;">
+                    <h3 style="font-family: 'Caveat', cursive; font-size: 2.5rem; color: var(--primary-green); margin-bottom: 2rem;">
+                        Het Pollinatorpad door de Betuwe
+                    </h3>
+                    <img src="images/kaart.png" 
+                         alt="Kaart van Het Pollinatorpad" 
+                         style="width: 100%; max-width: 900px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                    <p style="margin-top: 2rem; font-size: 1.1rem; color: var(--light-text); max-width: 700px; margin-left: auto; margin-right: auto;">
+                        De route verbindt Culemborg, Eendenkooi, Landgoed Mariënwaerd, Fruitmotor, Tienvaart, Goilberdingerwaard en Leerdom.
+                    </p>
+                </div>
+                
+                <p style="font-size: 1.2rem; color: var(--light-text); line-height: 1.8;">
+                    Onderweg ontmoet je diverse landschappen: van fruitboomgaarden tot rivieruiterwaarden, 
+                    van bloeiende akkerranden tot oude dijken. Een route door het levende hart van de Betuwe.
+                </p>
+            </div>
+        </section>
+
+        <section class="community-section" id="meedoen">
+            <h2>We doen dit samen</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.95;">
+                Het Pollinatorpad ontstaat door de inzet van lokale bewoners, ondernemers en natuurliefhebbers. 
+                Jouw betrokkenheid maakt het verschil.
+            </p>
+
+            <!-- Community Photos -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+                <div style="border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.3);">
+                    <img src="images/The_Pollinators_TOMS_in_MijnStadstuin_28-11_logo-20__1_.jpg" 
+                         alt="Groep mensen aan het planten" 
+                         style="width: 100%; height: 350px; object-fit: cover; display: block;">
+                </div>
+                
+                <div style="border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.3);">
+                    <img src="images/Promo_Nationale_Zaaidag_2021_Kine_-_Tosca_van_der_Wouden_.jpg" 
+                         alt="Genieten van de natuur" 
+                         style="width: 100%; height: 350px; object-fit: cover; display: block;">
+                </div>
+            </div>
+
+            <div class="community-grid">
+                <div class="community-card">
+                    <span class="community-icon">🌱</span>
+                    <h3>Plant mee</h3>
+                    <p>
+                        Help bij zaaiactiviteiten en plantdagen. Samen maken we de Betuwe groener.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <span class="community-icon">💚</span>
+                    <h3>Adopteer een stuk pad</h3>
+                    <p>
+                        Neem de zorg voor een deel van het pad op je. Van een paar meter tot een heel stuk.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <span class="community-icon">📢</span>
+                    <h3>Verspreid het woord</h3>
+                    <p>
+                        Vertel vrienden, familie en buren over het Pollinatorpad. Samen bereiken we meer.
+                    </p>
+                </div>
+
+                <div class="community-card">
+                    <span class="community-icon">🎉</span>
+                    <h3>Kom naar de opening</h3>
+                    <p>
+                        Vier mee bij de feestelijke opening in juni 2026!
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="#contact" class="cta-button" style="background: var(--soft-yellow); color: var(--dark-text);">Meld je aan</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="event-section">
+                <div class="event-date">Juni 2026</div>
+                <h2>Feestelijke opening!</h2>
+                <p style="font-size: 1.3rem; color: var(--dark-text); max-width: 750px; margin: 1rem auto 0; line-height: 1.8;">
+                    In juni 2026 openen we Het Pollinatorpad officieel. Een dag vol wandelen, ontdekken en vieren. 
+                    Met muziek, natuur en natuurlijk heel veel bloemen. Save the date!
+                </p>
+            </div>
+        </section>
+
+        <section id="partners">
+            <h2>Samen sterk</h2>
+            <p class="section-intro">
+                Het Pollinatorpad is een samenwerking tussen verschillende organisaties die zich inzetten 
+                voor biodiversiteit en natuurherstel in de Betuwe.
+            </p>
+
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <svg width="80" height="80" style="margin-bottom: 1rem;">
+                        <use href="#bee-illustration"></use>
+                    </svg>
+                    <h3>The Pollinators</h3>
+                    <p>Biodiversiteitsorganisatie met 6000+ distributiepunten</p>
+                </div>
+
+                <div class="partner-card">
+                    <svg width="80" height="80" style="margin-bottom: 1rem;">
+                        <circle cx="40" cy="40" r="30" fill="#42A5F5" opacity="0.3"/>
+                        <path d="M20 40 Q30 30, 40 40 T60 40" stroke="#42A5F5" stroke-width="4" fill="none"/>
+                    </svg>
+                    <h3>Gonzend Rivierenland</h3>
+                    <p>Natuurherstel in het rivierengebied</p>
+                </div>
+
+                <div class="partner-card">
+                    <svg width="80" height="80" style="margin-bottom: 1rem;">
+                        <use href="#hands-illustration"></use>
+                    </svg>
+                    <h3>Lokale gemeenten</h3>
+                    <p>Partners in groen en biodiversiteit</p>
+                </div>
+
+                <div class="partner-card">
+                    <svg width="80" height="80" style="margin-bottom: 1rem;">
+                        <use href="#plant-illustration"></use>
+                    </svg>
+                    <h3>Bewoners</h3>
+                    <p>Jullie maken het pad tot een succes</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h4>Het Pollinatorpad</h4>
+                <p>Een initiatief voor biodiversiteit in de Betuwe</p>
+                <svg width="60" height="60" style="margin-top: 1rem; opacity: 0.5;">
+                    <use href="#logo-symbol"></use>
+                </svg>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>
+                    Email: <a href="mailto:info@hetpollinatorpad.nl">info@hetpollinatorpad.nl</a><br>
+                </p>
+            </div>
+
+            <div>
+                <h4>Volg ons</h4>
+                <p>
+                    Blijf op de hoogte via onze partners:<br>
+                    <a href="https://thepollinators.nl" target="_blank">The Pollinators</a><br>
+                    <a href="#" target="_blank">Gonzend Rivierenland</a>
+                </p>
+            </div>
+
+            <div>
+                <h4>Meedoen?</h4>
+                <p>
+                    Iedereen is welkom om bij te dragen aan Het Pollinatorpad. 
+                    Neem contact met ons op!
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Het Pollinatorpad | Een samenwerking tussen The Pollinators en Gonzend Rivierenland</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate progress bar on scroll
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = document.getElementById('progressBar');
+                    const progressText = document.getElementById('progressText');
+                    const metersRealized = document.getElementById('metersRealized');
+                    const participantsCount = document.getElementById('participantsCount');
+                    
+                    let progress = 0;
+                    const targetProgress = 15;
+                    const targetMeters = 4500;
+                    const targetParticipants = 127;
+                    
+                    const interval = setInterval(() => {
+                        if (progress < targetProgress) {
+                            progress++;
+                            progressBar.style.width = progress + '%';
+                            progressText.textContent = progress + '%';
+                            metersRealized.textContent = Math.round((progress / targetProgress) * targetMeters).toLocaleString('nl-NL');
+                            participantsCount.textContent = Math.round((progress / targetProgress) * targetParticipants);
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 30);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const progressSection = document.querySelector('.progress-section');
+        if (progressSection) {
+            observer.observe(progressSection);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
